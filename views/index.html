@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shepoo - Trang chủ</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <h1>Chào mừng đến với Shepoo</h1>
+  <div id="product-list"></div>
+  <script src="/js/main.js"></script>
+  div.innerHTML = `
+  <h3>${product.name}</h3>
+  <img src="${product.image}" width="100"/>
+  <p>${product.price.toLocaleString()} VND</p>
+  <a href="/product.html?id=${product.id}">Xem chi tiết</a>
+  <button onclick='addToCart(${JSON.stringify(product)})'>Thêm vào giỏ</button>
+`;
+
+</body>
+</html>

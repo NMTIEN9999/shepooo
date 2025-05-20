@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi tiết sản phẩm</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="productDetail"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    fetch('/products')
+      .then(res => res.json())
+      .then(products => {
+        const product = products.find(p => p.id == id);
+        const container = document.getElementById('productDetail');
+        if (product) {
+          container.innerHTML = `
+            <h2>${product.name}</h2>
+            <img src="${product.image}" width="200">
+            <p>Giá: ${product.price.toLocaleString()} VND</p>
+            <button onclick='addToCart(${JSON.stringify(product)})'>Thêm vào giỏ</button>
+          `;
+        } else {
+          container.textContent = 'Không tìm thấy sản phẩm.';
+        }
+      });
+
+    function addToCart(product) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Đã thêm vào giỏ!');
+    }
+  </script>
+</body>
+</html>

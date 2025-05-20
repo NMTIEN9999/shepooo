@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập - Shepoo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h2>Đăng nhập vào Shepoo</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Tên đăng nhập" required><br>
+    <input type="password" id="password" placeholder="Mật khẩu" required><br>
+    <button type="submit">Đăng nhập</button>
+  </form>
+  <p id="loginStatus"></p>
+  <script>
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const res = await fetch('/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+      document.getElementById('loginStatus').textContent = data.message;
+
+      if (data.success) {
+        localStorage.setItem('user', username);
+        window.location.href = '/';
+      }
+    };
+  </script>
+</body>
+</html>

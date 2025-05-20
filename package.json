@@ -1,0 +1,19 @@
+{
+  "name": "shepoo",
+  "version": "1.0.0",
+  "description": "Shopee clone with Node.js and MVC",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["shopee", "clone", "mvc", "nodejs"],
+  "author": "Tên của bạn",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

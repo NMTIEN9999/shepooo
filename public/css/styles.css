@@ -1,0 +1,10 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#product-list > div {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+}

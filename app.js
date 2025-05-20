@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Shepoo running at http://localhost:${PORT}`);
+const PORT = process.env.PORT ||18013;
+app.listen(PORT, () => console.log(`Shepoo running on port ${PORT}`));
+
 });
